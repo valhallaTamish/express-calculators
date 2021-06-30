@@ -1,0 +1,14 @@
+language: node_js
+
+services: 
+  - docker
+ 
+script:
+  - docker build -t rtxverma123/travisexpressapp .
+  - docker images
+
+deploy: 
+  provider: script
+  script: bash docker_push
+  on:
+   branch: dockerhub
