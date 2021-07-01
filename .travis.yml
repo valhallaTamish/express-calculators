@@ -6,9 +6,11 @@ services:
 script:
   - docker build -t rtxverma123/travisexpressapp .
   - docker images
+  - docker push rtxverma123/travisexpressapp
 
 deploy: 
   #edge: true
   provider: script
   script: bash docker_push
-  on: dockerhub
+  on: 
+   branch: all
