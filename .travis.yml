@@ -7,11 +7,16 @@ script:
   - docker build -t rtxverma123/travisexpressapp .
   - docker images
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push rtxverma123/travisexpressapp
+#   - docker push rtxverma123/travisexpressapp
 
-# deploy: 
-#   #edge: true
-#   provider: script
-#   script: bash docker_push
-#   on: 
-#    branch: all
+deploy:
+  provider: elasticbeanstalk
+  region: ap-south-1
+  app: "my-first-app"
+  env: "Myfirstapp-env"
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  bucket_name: "tamishbucket"
+  bucket_path: "docker"
+  on: 
+   branch: main
