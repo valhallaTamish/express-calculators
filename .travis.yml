@@ -3,11 +3,11 @@ language: generic
 services: 
   - docker
  
-# script:
-#   - docker build -t rtxverma123/travisexpressapp .
-#   - docker images
-#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-#   - docker push rtxverma123/travisexpressapp
+script:
+  - docker build -t rtxverma123/travisexpressapp .
+  - docker images
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push rtxverma123/travisexpressapp
 
 deploy:
   provider: elasticbeanstalk
@@ -16,7 +16,7 @@ deploy:
   env: "Myfirstapp-env"
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
-  bucket_name: "tamishbucket"
-  bucket_path: "docker"
+  bucket_name: "elasticbeanstalk-ap-south-1-488435218657"
+  bucket_path: "docker-multi"
   on: 
    branch: main
