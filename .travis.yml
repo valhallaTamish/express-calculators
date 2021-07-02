@@ -3,10 +3,10 @@ language: node_js
 services: 
   - docker
  
-script:
-  - docker build -t rtxverma123/travisexpressapp .
-  - docker images
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+# script:
+#   - docker build -t rtxverma123/travisexpressapp .
+#   - docker images
+#   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 #   - docker push rtxverma123/travisexpressapp
 
 deploy:
