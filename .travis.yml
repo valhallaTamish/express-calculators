@@ -33,7 +33,7 @@ script:
 #    branch: main
 scripts: 
     - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-    - ibmcloud login --Email 'tamish.verma@tcs.com' --Password 'Devops12@'
+    - ibmcloud login -u 'tamish.verma@tcs.com' -p 'Devops12@'
     - ibmcloud login --apikey 'c927b53a-bf8e-4d68-b3e0-ac3979c7554f' -r "${IBM_CLOUD_REGION}" -g Default
     - ibmcloud plugin install -f kubernetes-service
     - ibmcloud plugin install -f container-registry
