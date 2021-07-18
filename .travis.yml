@@ -39,10 +39,6 @@ script:
 #   on: 
 #    branch: main
 before_install: 
-    - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-    - ibmcloud login -u 'tamish.verma@tcs.com' -p 'Devops12@' -y
-    - ibmcloud plugin install -f kubernetes-service
-    - ibmcloud plugin install -f container-registry
     - chmod +x cluster_configuration.sh
 
 install:
