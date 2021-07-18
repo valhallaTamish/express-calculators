@@ -2,7 +2,18 @@ language: node_js
 
 services: 
   - docker
- 
+
+env:
+  global: 
+   - IBM_CLOUD_REGION: 'us-south'
+   - IBM_CLOUD_API_KEY: "c927b53a-bf8e-4d68-b3e0-ac3979c7554f"
+   - REGISTRY_HOSTNAME: 'de.icr.io'
+   - IKS_CLUSTER: 'c3p8us7d0cj2bgr2g73g'
+   - DEPLOYMENT_NAME: 'iks-test'
+   - PORT: '5001'
+   - Email: 'tamish.verma@tcs.com'
+   - Password: 'Devops12@'
+  
 script:
   - docker build -t rtxverma123/travisexpressapp .
   - docker images
@@ -20,46 +31,13 @@ script:
 #   bucket_path: "docker-multi"
 #   on: 
 #    branch: main
-
-
-sudo: required
-
-services: 
-  - docker
-
-
-# deploy: 
-#    provider: elasticbeanstalk
-#    region: ap-south-1
-#    app: "myexpress-blog"
-#    env: "Myexpressblog-env"
-#    bucket_name: "elasticbeanstalk-ap-south-1-488435218657"
-#    bucket_path: "docker"
-#    access_key_id: $ACCESS
-#    secret_access_key: $SECRET
-#    on: 
-#     branch: master
-env:
-  global: 
-   - IBM_CLOUD_REGION: 'us-south'
-   - IBM_CLOUD_API_KEY: "c927b53a-bf8e-4d68-b3e0-ac3979c7554f"
-   - REGISTRY_HOSTNAME: 'de.icr.io'
-   - IKS_CLUSTER: 'c3p8us7d0cj2bgr2g73g'
-   - DEPLOYMENT_NAME: 'iks-test'
-   - PORT: '5001'
-   - Email: 'tamish.verma@tcs.com'
-   - Password: 'Devops12@'
-
-
-  
 scripts: 
     - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
-    - ibmcloud login --apikey c927b53a-bf8e-4d68-b3e0-ac3979c7554f -r "${IBM_CLOUD_REGION}" -g Default
+    - ibmcloud login --Email 'tamish.verma@tcs.com' --Password 'Devops12@'
+    - ibmcloud login --apikey 'c927b53a-bf8e-4d68-b3e0-ac3979c7554f' -r "${IBM_CLOUD_REGION}" -g Default
     - ibmcloud plugin install -f kubernetes-service
     - ibmcloud plugin install -f container-registry
-    
-    
-    
+       
 deploy:
   provider: script
   script: bash deploy.sh
