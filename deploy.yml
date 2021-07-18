@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+    name: flaskdeploy
+    labels: 
+       app: myapp
+spec: 
+  replicas: 1
+  selector: 
+     matchLabels: 
+          app: myapp
+  template: 
+     metadata: 
+        labels: 
+            app: myapp
+     spec: 
+       containers: 
+           - name: flaskapp
+             image: rtxverma123/flaskblog
+             ports: 
+               - containerPort: 5000
