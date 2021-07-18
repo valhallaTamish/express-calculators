@@ -13,12 +13,19 @@ env:
    - PORT: '5001'
    - Email: 'tamish.verma@tcs.com'
    - Password: 'Devops12@'
+
+
+before_install: 
+    - curl -fsSL https://clis.cloud.ibm.com/install/linux | sh
+    - ibmcloud login -u 'tamish.verma@tcs.com' -p 'Devops12@' -y
+    - ibmcloud plugin install -f kubernetes-service
+    - ibmcloud plugin install -f container-registry
   
 script:
-  - docker build -t rtxverma123/travisexpressapp .
+  
   - docker images
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push rtxverma123/travisexpressapp
+
 
 # deploy:
 #   provider: elasticbeanstalk
