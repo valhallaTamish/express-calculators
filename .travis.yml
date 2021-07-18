@@ -43,6 +43,10 @@ before_install:
     - ibmcloud login -u 'tamish.verma@tcs.com' -p 'Devops12@' -y
     - ibmcloud plugin install -f kubernetes-service
     - ibmcloud plugin install -f container-registry
+    - chmod +x cluster_configuration.sh
+
+install:
+    - "./cluster_configuration.sh"
     
     
        
